@@ -38,16 +38,29 @@ test('AAA-02: Điền form đăng ký và kiểm tra validation', async ({ page 
 
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~ ACT ~~~~~~~~~~~~~~~~~~~~~~~~~~
   // Thêm 1 todo item
-  await page.fill('input.new-todo', 'Học Playwright Automation');
+  await page.fill('input.new-todo', 'Phduyen học Automation');
   await page.keyboard.press('Enter');
 
   // ~~~~~~~~~~~~~~~~~~~~~~~~ ASSERT ~~~~~~~~~~~~~~~~~~~~~~~~~
   // Kiểm tra todo đã xuất hiện trong danh sách
   await expect(page.locator('.todo-list li')).toHaveCount(1);
   await expect(page.locator('.todo-list li label'))
-    .toContainText('Học Playwright Automation');
+    .toContainText('Phduyen Automation');
 });
+/*
+1. error message: 
+Error: expect(locator).toContainText(expected) failed
 
+Locator: locator('.todo-list li label')
+Expected substring: "Phduyen Automation"
+Received string:    "Phduyen học Automation"
+Timeout: 5000ms
+2. Screenshoot:
+Kết quả mong đợi : có chứa text : Phduyen Automation với số lượng locator('.todo-list li') = 1
+Kết quả thực tế:  chứa text Phduyen học Automation
+4. Loại lỗi :
+Data mong đợi ≠ thực tế
+*/
 
 // ─── Ví dụ 3: Mô phỏng test case iPortal ────────────────────
 test('AAA-03: Mô phỏng tìm kiếm đơn vị trên iPortal', async ({ page }) => {
