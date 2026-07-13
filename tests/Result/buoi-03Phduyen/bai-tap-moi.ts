@@ -16,6 +16,7 @@ else{
 
 
 
+
 //PhDuyen//Bài 2:
 const dailyRevenue: number[] = [150000,230000,0,180000,350000,420000,0];
 let Tongdoanhthu: number =0; // gán tổng doanh thu ban đầu =0
