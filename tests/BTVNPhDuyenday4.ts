@@ -128,6 +128,7 @@ const card3: CardDataBai3 = {
   bankCode: "MB",
   cardType: "atm",
 };
+
 console.log(validateCard(card1));
 console.log(validateCard(card2));
 console.log(validateCard(card3));
