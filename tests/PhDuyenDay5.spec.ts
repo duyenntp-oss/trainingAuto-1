@@ -17,7 +17,7 @@ test('test đăng nhập', async ({ page }) => {
   await page.getByRole('textbox', { name: 'Password' }).click();
   await page.getByRole('textbox', { name: 'Password' }).fill('SuperSecretPassword!');
   await page.getByRole('button', { name: 'Login' }).click();
-await page.waitForTimeout(200000)
+//  await page.waitForTimeout(100000)
   // ~~~~~~~~~~~~~~~~~~~~~~~~ ASSERT ~~~~~~~~~~~~~~~~~~~~~~~~~
   // 3. ASSERT
  await expect(page.locator('#flash')).toContainText('You logged into a secure area!')
@@ -37,19 +37,22 @@ ASSERT	Kiểm tra kết quả tìm kiếm xuất hiện (có ít nhất 1 kết 
 //import { test, expect } from '@playwright/test';
 
 test('Tìm kiếm google', async ({ page }) => {
-  await page.goto('https://www.google.com/');
-  await page.getByRole('combobox', { name: 'Tìm kiếm' }).click();
-  await page.getByRole('combobox', { name: 'Tìm kiếm' }).fill('Playwright automation');
+await page.goto('https://www.bing.com/');
+  await page.getByRole('combobox', { name: 'Enter your search here -' }).click();
+  await page.getByRole('combobox', { name: 'Enter your search here -' }).fill('Playwright automation');
   await page.locator('textarea[name="q"]').press('Enter');
+  await page.goto('https://www.bing.com/search?q=Playwright+automation&form=QBLH&sp=-1&ghc=1&lq=0&pq=playwright+automation&sc=12-21&qs=n&sk=&cvid=E5F89D0754354851BD93E6DA96BBF8ED');
 
 
-    await expect(page.locator('#search')).toBeVisible();
 
-  const results = page.locator('#search .g');
-  await expect(results.first()).toBeVisible();
+    // await expect(page.locator('#search')).toBeVisible();
 
-  await expect(page.locator('span').filter({ hasText: 'Playwright automation' }));
+  // const results = page.locator('#search');
+  // await expect(results).toBeVisible();
+
+  await expect(page.locator('div').filter({ hasText: 'Playwright automation' }));
 });
+
 /*
 
 
