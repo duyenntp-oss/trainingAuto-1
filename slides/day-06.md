@@ -742,7 +742,7 @@ for (const kw of keywords) {
 1. **Tạo file data** `data/merchant.data.ts` – chứa ít nhất 3 bộ data test (tên, mã số thuế, email, phone)
 
 2. **Tạo Page Class** `lib/pages/merchant.page.ts`:
-   - Ít nhất 5 Locator (kết hợp CSS + XPath)
+   - Ít nhất 5 Locator (XPath)
    - Ít nhất 5 Method (search, clickAdd, clickEdit, verifyResult, getRowCount...)
    - Kế thừa `BasePage`
 
