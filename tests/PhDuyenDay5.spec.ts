@@ -44,12 +44,6 @@ await page.goto('https://www.bing.com/');
   await page.goto('https://www.bing.com/search?q=Playwright+automation&form=QBLH&sp=-1&ghc=1&lq=0&pq=playwright+automation&sc=12-21&qs=n&sk=&cvid=E5F89D0754354851BD93E6DA96BBF8ED');
 
 
-
-    // await expect(page.locator('#search')).toBeVisible();
-
-  // const results = page.locator('#search');
-  // await expect(results).toBeVisible();
-
   await expect(page.locator('div').filter({ hasText: 'Playwright automation' }));
 });
 
