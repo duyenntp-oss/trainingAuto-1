@@ -25,13 +25,13 @@ export class MerchantPage extends BasePage { // kế thừa base
   addButton = this.page.locator('//button[@label="Tạo mới"]');
 
   // Nút Edit của dòng đầu tiên
-  editButton = this.page.locator("(//button[contains(text(),'Edit')])[1]");
+  editButton = this.page.locator("(//td/a[@class='ng-star-inserted'])[1]"); 
 
   // Bảng dữ liệu Merchant
-  merchantTable = this.page.locator("//table//tbody//tr");
+  merchantTable = this.page.locator('//*[@id="pr_id_10-table"]/tbody');
 
   // Kết quả tìm kiếm theo tên Merchant
-  merchantName = this.page.locator("//table//tbody//tr[1]/td[1]");
+  merchantName = this.page.locator("//*[@id'pr_id_10-table']/tbody/tr[1]"); 
 
   // ==========================
   // Methods
@@ -53,7 +53,11 @@ export class MerchantPage extends BasePage { // kế thừa base
     await this.editButton.click();
   }
 
-  // Verify kết quả tìm kiếm
+  // Verify kết quả tìm kiếm 
+  // //Tạo một hàm tên verifyResult.
+  //  Khi được gọi, hàm sẽ nhận vào một chuỗi expectedName,
+  //  sau đó đợi Playwright kiểm tra xem phần tử merchantName trên giao diện có chứa chuỗi đó hay không. 
+  // Nếu có thì test tiếp tục, nếu không thì test sẽ thất bại.
   async verifyResult(expectedName: string) {
     await expect(this.merchantName).toContainText(expectedName);
   }
@@ -61,6 +65,9 @@ export class MerchantPage extends BasePage { // kế thừa base
   // Đếm số dòng trong bảng
 async getRowCount() {
   const rowCount = await this.merchantTable.count();
-  return rowCount;
+
+  console.log(rowCount);
+
+  //return rowCount;
 }
 }
