@@ -14,6 +14,7 @@ import { merchantData } from "../data/merchant.dataBTVN";
 
 test.describe("Merchant CRUD Test", () => {
 
+    
 
   let loginPage: LoginPage;
   let merchantPage: MerchantPage;
@@ -31,13 +32,13 @@ test.describe("Merchant CRUD Test", () => {
 
     // Login trước khi test Merchant
     await loginPage.login(
-      "admin",
-      "123456"
+      "admin@onepay.vn",
+      "Ss123456789"
     );
 
 
     // Đi tới trang Merchant
-    await page.goto("https://dev42-iportal.opdev.vn/iportal/");
+    await page.goto("https://dev42-iportal.opdev.vn/iportal/merchantid/merchant-id/merchant-list");
 
   });
 
@@ -47,20 +48,16 @@ test.describe("Merchant CRUD Test", () => {
   // TC01: Tìm kiếm đơn vị theo tên chính xác
   // =====================================
 
-  test("TC01 - Search merchant by exact name", async () => {
+  test("TC01 - Tìm kiếm đơn vị theo tên chính xác", async () => {
 
-
+    
     const merchant = merchantData[0];
 
 
-    await merchantPage.search(
-      merchant.name
-    );
+    await merchantPage.search(merchant.name);
 
 
-    await merchantPage.verifyResult(
-      merchant.name
-    );
+    await merchantPage.verifyResult(merchant.name);
 
 
   });
@@ -74,17 +71,13 @@ test.describe("Merchant CRUD Test", () => {
   merchantData.forEach((merchant) => {
 
 
-    test(`TC02 - Search merchant: ${merchant.name}`, async () => {
+    test(`TC02 - Data-driven search với 3 data: ${merchant.name}`, async () => {
 
 
-      await merchantPage.search(
-        merchant.name
-      );
+      await merchantPage.search(merchant.name);
 
 
-      await merchantPage.verifyResult(
-        merchant.name
-      );
+      await merchantPage.verifyResult( merchant.name);
 
 
     });
@@ -98,7 +91,7 @@ test.describe("Merchant CRUD Test", () => {
   // TC03: Kiểm tra hiển thị danh sách mặc định
   // =====================================
 
-  test("TC03 - Verify default merchant list display", async () => {
+  test("TC03 - Kiểm tra hiển thị danh sách mặc định", async () => {
 
 
     const rowCount = await merchantPage.getRowCount();
@@ -115,12 +108,10 @@ test.describe("Merchant CRUD Test", () => {
   // TC04: Search keyword không tồn tại
   // =====================================
 
-  test("TC04 - Search merchant not exist", async () => {
+  test("TC04 - Search keyword không tồn tại", async () => {
 
 
-    await merchantPage.search(
-      "ABCXYZ123456"
-    );
+    await merchantPage.search("ABCXYZ123456");
 
 
     const rowCount = await merchantPage.getRowCount();
@@ -137,19 +128,17 @@ test.describe("Merchant CRUD Test", () => {
   // TC05: Click Thêm Đơn Vị và kiểm tra form
   // =====================================
 
-  test("TC05 - Click Add Merchant and verify form display", async () => {
+  test("TC05 - Click Thêm Đơn Vị và kiểm tra form", async () => {
 
 
     await merchantPage.clickAdd();
 
 
-    const formTitle = merchantPage.page.locator(
-      "//h1[contains(text(),'Thêm Đơn Vị')]"
+    const formTitle = merchantPage.page.locator( "//h1[contains(text(),'Thêm Đơn Vị')]"
     );
 
 
-    await expect(formTitle)
-      .toBeVisible();
+    await expect(formTitle).toBeVisible();
 
 
   });

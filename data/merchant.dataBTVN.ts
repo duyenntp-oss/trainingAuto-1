@@ -8,7 +8,7 @@ export type merchantData = {
 }
 export const merchantData = [
   {
-    name: "Công ty TNHH ABC",
+    name: "TEST ONEPAY",
     taxCode: "0312345678",
     email: "abc@test.com",
     phone: "0901234567",

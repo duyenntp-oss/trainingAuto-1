@@ -25,8 +25,7 @@ export class LoginPage extends BasePage {
   passwordInput = this.page.locator('//input[@id="password"]');
 
   // Nút Login
-  loginButton = this.page.locator('//button[@type="submit"]');
-
+  loginButton = this.page.locator('//div/button[@name="login"]');
 
   // ==========================
   // Method
@@ -40,6 +39,8 @@ export class LoginPage extends BasePage {
     await this.passwordInput.fill(password);
 
     await this.loginButton.click();
+    
+
 
   }
 
